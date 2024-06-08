@@ -26,7 +26,9 @@ namespace BlazingPizza
 
         public decimal GetBasePrice()
         {
-            return ((decimal)Size / (decimal)DefaultSize) * Special.BasePrice;
+            return Special.FixedSize != null ?
+                Special.BasePrice : 
+                (decimal)Size / DefaultSize * Special?.BasePrice ?? 1;
         }
 
         public decimal GetTotalPrice()
